@@ -18,7 +18,7 @@ public class MainTest {
     }
 
     @Test
-    public void runThreeDays() throws Exception {
+    public void runThreeFloorsInTwoDays() throws Exception {
         assertRunSnail(3, 2, 1, 2);
     }
 
@@ -26,7 +26,6 @@ public class MainTest {
     public void runTenFloorInEightDays() throws Exception {
         assertRunSnail(10, 3, 2, 8);
     }
-
 
     @Test
     public void runTwentyFloorsInFiveDays() throws Exception {
