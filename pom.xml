@@ -12,6 +12,7 @@
 
     <modules>
         <module>case2221-snail</module>
+        <module>case3793-simple-equation</module>
     </modules>
 
     <developers>
