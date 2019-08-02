@@ -13,6 +13,7 @@
     <modules>
         <module>case2221-snail</module>
         <module>case3793-simple-equation</module>
+        <module>case3791-create-euphonious-word</module>
     </modules>
 
     <developers>
