@@ -1,0 +1,9 @@
+= Reading files -> Count even numbers
+
+https://hyperskill.org/learn/step/4839
+
+There is a file containing a sequence of integers. Each number starts with a new line.
+
+Download the file and write a Java program to count the number of even numbers in this file. You should stop counting if you get 0 or the last number is reached.
+
+Enter the result.
