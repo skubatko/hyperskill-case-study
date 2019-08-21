@@ -1,0 +1,9 @@
+= Reading files -> The sum of numbers in a file
+
+https://hyperskill.org/learn/step/4840
+
+There is a file containing a sequence of integers. Each number starts with a new line.
+
+Download it and write a Java program to find the sum of these numbers.
+
+Enter the result.

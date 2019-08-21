@@ -16,6 +16,7 @@
         <module>case3791-create-euphonious-word</module>
         <module>case4840-reading-files</module>
         <module>case4841-reading-files</module>
+        <module>case4838-reading-files</module>
     </modules>
 
     <developers>
