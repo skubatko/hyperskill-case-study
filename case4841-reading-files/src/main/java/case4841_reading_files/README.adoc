@@ -1,0 +1,9 @@
+= Reading files -> Count numbers in a file
+
+https://hyperskill.org/learn/step/4841
+
+There is a file containing a sequence of integers separated by spaces.
+
+Download it and write a Java program and count numbers which are greater than or equal to 9999.
+
+Enter the count.
