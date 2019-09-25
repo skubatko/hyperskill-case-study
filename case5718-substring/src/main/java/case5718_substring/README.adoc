@@ -1,0 +1,42 @@
+= Searching a substring in Java  -> Non-overlapping occurrences
+
+https://hyperskill.org/learn/step/5718
+
+Let i i and j j are starting and ending indexes of a substring s s in some string, i^{\prime} i
+′
+  and j^{\prime} j
+′
+  are starting and ending indexes of a substring s^{\prime} s
+′
+  in the same string. s s and s^{\prime} s
+′
+  are called non-overlapping if i \le j \lt i^{\prime} \le j^{\prime} i≤j<i
+′
+ ≤j
+′
+ .
+
+Given two strings, a pattern and a text. Write a program that finds all non-overlapping occurrences of the pattern in the text.
+
+Input: two strings, a pattern and a text, each is on a separate line.
+
+Output: the first line should contain the number of non-overlapping occurrences of the pattern in the text. The second line should contain all indexes of such occurrences separated by space. For two overlapping substrings, consider as occurrence the one that has the least starting index.
+
+NB: the empty string is a substring for any string (see the second test case).
+
+Sample Input 1:
+
+aba
+ababababab
+Sample Output 1:
+
+2
+0 4
+Sample Input 2:
+
+
+abc
+Sample Output 2:
+
+3
+0 1 2

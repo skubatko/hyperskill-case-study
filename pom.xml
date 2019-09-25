@@ -19,6 +19,7 @@
         <module>case4838-reading-files</module>
         <module>case4839-reading-files</module>
         <module>case4842-reading-files</module>
+        <module>case5718-substring</module>
     </modules>
 
     <developers>
