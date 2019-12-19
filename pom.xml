@@ -20,6 +20,7 @@
         <module>case4839-reading-files</module>
         <module>case4842-reading-files</module>
         <module>case5718-substring</module>
+        <module>case7259-fixed-sizearray-calculations</module>
     </modules>
 
     <developers>
