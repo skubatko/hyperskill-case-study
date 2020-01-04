@@ -36,6 +36,10 @@ https://hyperskill.org/learn/step/5718
 Fixed-size array → Calculations
 https://hyperskill.org/learn/step/7259
 
+== case5722
+Rabin-Karp algorithm in Java → A substring of the maximal length
+https://hyperskill.org/learn/step/5722
+
 == case5723
 Rabin-Karp algorithm in Java → The number of equal substring pairs
 https://hyperskill.org/learn/step/5723

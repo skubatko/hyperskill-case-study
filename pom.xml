@@ -11,16 +11,18 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>case2221-snail</module>
-        <module>case3793-simple-equation</module>
-        <module>case3791-create-euphonious-word</module>
-        <module>case4840-reading-files</module>
-        <module>case4841-reading-files</module>
-        <module>case4838-reading-files</module>
-        <module>case4839-reading-files</module>
-        <module>case4842-reading-files</module>
-        <module>case5718-substring</module>
-        <module>case7259-fixed-sizearray-calculations</module>
+        <module>case2221</module>
+        <module>case3793</module>
+        <module>case3791</module>
+        <module>case4840</module>
+        <module>case4841</module>
+        <module>case4838</module>
+        <module>case4839</module>
+        <module>case4842</module>
+        <module>case5718</module>
+        <module>case7259</module>
+        <module>case5722</module>
+        <module>case5723</module>
     </modules>
 
     <developers>
@@ -39,21 +41,21 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
-            <version>2.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-            <version>2.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.6.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
