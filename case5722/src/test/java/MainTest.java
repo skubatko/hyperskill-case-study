@@ -37,7 +37,7 @@ public class MainTest {
         String s = IOUtils.toString(
                 this.getClass().getResourceAsStream(
                         "hyperskill-5722-test-21.txt"), "UTF-8");
-        int expected = 0;
+        int expected = 498639;
 
         int result = Main.proceed(s);
 
