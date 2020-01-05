@@ -67,5 +67,4 @@ public class Case5723Test {
 
         assertThat(result).isEqualTo(expected);
     }
-
 }
