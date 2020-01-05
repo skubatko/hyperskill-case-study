@@ -1,16 +1,14 @@
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.apache.commons.io.IOUtils;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.Timeout;
 
 import java.io.IOException;
 
 public class MainTest {
 
-    @Rule
-    public Timeout globalTimeout = Timeout.seconds(8);
+//    @Rule
+//    public Timeout globalTimeout = Timeout.seconds(8);
 
     @Test
     public void proceedCase1() {
