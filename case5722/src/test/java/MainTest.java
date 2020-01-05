@@ -1,14 +1,16 @@
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.apache.commons.io.IOUtils;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.Timeout;
 
 import java.io.IOException;
 
 public class MainTest {
 
-//    @Rule
-//    public Timeout globalTimeout = Timeout.seconds(8);
+    @Rule
+    public Timeout globalTimeout = Timeout.seconds(5);
 
     @Test
     public void proceedCase1() {
@@ -35,7 +37,7 @@ public class MainTest {
         String s = IOUtils.toString(
                 this.getClass().getResourceAsStream(
                         "hyperskill-5722-test-21.txt"), "UTF-8");
-        int expected = 498639;
+        int expected = 82;
 
         int result = Main.proceed(s);
 
