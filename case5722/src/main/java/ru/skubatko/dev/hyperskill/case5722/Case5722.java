@@ -1,3 +1,5 @@
+package ru.skubatko.dev.hyperskill.case5722;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +11,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
-public class Main {
+public class Case5722 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -64,8 +66,8 @@ public class Main {
 
         int a1 = 59;
         int a2 = 53;
-        long m1 = 1_000_000_000 + 7;
-        long m2 = 1_000_000_000 + 9;
+        long m1 = 1_000_000_000L + 7;
+        long m2 = 1_000_000_000L + 9;
 
         for (int i = 0; i < size; i++) {
             hash1 += s.charAt(capacity - 1 + i) * pow1;
@@ -81,7 +83,7 @@ public class Main {
         }
         hashMap.put(hash1, hash2);
 
-        for (int i = length, j = 1; i > size; i--, j++) {
+        for (int i = length; i > size; i--) {
             hash1 = (hash1 - s.charAt(i - 1) * pow1 % m1 + m1) * a1 % m1;
             hash1 = (hash1 + s.charAt(i - size - 1)) % m1;
 
@@ -89,7 +91,7 @@ public class Main {
             hash2 = (hash2 + s.charAt(i - size - 1)) % m2;
 
             Long hash = hashMap.put(hash1, hash2);
-            if (hash != null && Objects.equals(hash, hash2)) {
+            if (hash != null && hash.equals(hash2)) {
                 return true;
             }
         }

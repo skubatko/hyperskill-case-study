@@ -1,4 +1,4 @@
-package case7259;
+package ru.skubatko.dev.hyperskill.case5722.case7259;
 
 import java.util.Arrays;
 
