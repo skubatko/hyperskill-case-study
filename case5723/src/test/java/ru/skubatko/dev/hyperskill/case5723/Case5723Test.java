@@ -49,6 +49,22 @@ public class Case5723Test {
     }
 
     @Test
+    public void proceedCase3() {
+        String s = "aaacabad";
+        int t = 2;
+        int[][] pairs = new int[][]{
+                {0, 1, 1, 2},
+                {0, 1, 2, 3}
+        };
+
+        int expected = 2;
+
+        int result = proceed(s, t, pairs);
+
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
     public void proceedCase06() throws IOException {
         List<String> lines = IOUtils.readLines(
                 this.getClass().getResourceAsStream(
@@ -61,7 +77,7 @@ public class Case5723Test {
             pairs[i] = Arrays.stream(lines.get(2 + i).split("\\s")).mapToInt(Integer::parseInt).toArray();
         }
 
-        int expected = 62;
+        int expected = 140;
 
         int result = proceed(s, t, pairs);
 
