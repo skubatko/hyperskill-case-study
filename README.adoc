@@ -48,6 +48,10 @@ https://hyperskill.org/learn/step/5729
 Knuth-Morris-Pratt algorithm in Java → Number of distinct substrings in a string
 https://hyperskill.org/learn/step/5730
 
+== case5731
+Knuth-Morris-Pratt algorithm in Java → Finding substrings in a matrix
+https://hyperskill.org/learn/step/5731
+
 == case7259
 Fixed-size array → Calculations
 https://hyperskill.org/learn/step/7259
