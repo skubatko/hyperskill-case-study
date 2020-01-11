@@ -43,3 +43,7 @@ https://hyperskill.org/learn/step/5722
 == case5723
 Rabin-Karp algorithm in Java → The number of equal substring pairs
 https://hyperskill.org/learn/step/5723
+
+== case5729
+Knuth-Morris-Pratt algorithm in Java → Non-overlapping occurrences of a pattern
+https://hyperskill.org/learn/step/5729

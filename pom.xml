@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.skubatko.dev.hyperskill</groupId>
-    <artifactId>hyperskill</artifactId>
+    <artifactId>root</artifactId>
     <version>1.0.0</version>
     <name>${project.artifactId}</name>
     <packaging>pom</packaging>
@@ -23,6 +23,7 @@
         <module>case7259</module>
         <module>case5722</module>
         <module>case5723</module>
+        <module>case5729</module>
     </modules>
 
     <developers>
