@@ -1,7 +1,7 @@
 = Hyperskill exercises https://hi.hyperskill.org/about
 
 == case2221
-Integer types and operations  arrow right Snail
+Integer types and operations arrow right Snail
 https://hyperskill.org/learn/step/2221
 
 == case3791
@@ -32,10 +32,6 @@ https://hyperskill.org/learn/step/4842
 Searching a substring in Java  -> Non-overlapping occurrences
 https://hyperskill.org/learn/step/5718
 
-== case7259
-Fixed-size array → Calculations
-https://hyperskill.org/learn/step/7259
-
 == case5722
 Rabin-Karp algorithm in Java → A substring of the maximal length
 https://hyperskill.org/learn/step/5722
@@ -47,3 +43,11 @@ https://hyperskill.org/learn/step/5723
 == case5729
 Knuth-Morris-Pratt algorithm in Java → Non-overlapping occurrences of a pattern
 https://hyperskill.org/learn/step/5729
+
+== case5730
+Knuth-Morris-Pratt algorithm in Java → Number of distinct substrings in a string
+https://hyperskill.org/learn/step/5730
+
+== case7259
+Fixed-size array → Calculations
+https://hyperskill.org/learn/step/7259
