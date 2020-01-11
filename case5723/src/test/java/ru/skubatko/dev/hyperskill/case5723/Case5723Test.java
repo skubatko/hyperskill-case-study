@@ -4,7 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static ru.skubatko.dev.hyperskill.case5723.Case5723.proceed;
 
 import org.apache.commons.io.IOUtils;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.Timeout;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -12,8 +14,8 @@ import java.util.List;
 
 public class Case5723Test {
 
-//    @Rule
-//    public Timeout globalTimeout = Timeout.seconds(3);
+    @Rule
+    public Timeout globalTimeout = Timeout.seconds(3);
 
     @Test
     public void proceedCase1() {
@@ -74,7 +76,9 @@ public class Case5723Test {
 
         int[][] pairs = new int[t][4];
         for (int i = 0; i < t; i++) {
-            pairs[i] = Arrays.stream(lines.get(2 + i).split("\\s")).mapToInt(Integer::parseInt).toArray();
+            pairs[i] = Arrays.stream(lines.get(2 + i).split("\\s"))
+                               .mapToInt(Integer::parseInt)
+                               .toArray();
         }
 
         int expected = 140;

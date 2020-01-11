@@ -5,6 +5,27 @@ import java.util.Scanner;
 
 public class Case5730 {
 
+    public static void main(String[] args) {
+        // https://e-maxx.ru/algo/prefix_function can help
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        System.out.println(proceed(s));
+    }
+
+    static int proceed(String s) {
+        int result = 2;
+        for (int i = 1; i < s.length(); i++) {
+            result += numberOfSubstring(s.substring(0, i), s.toCharArray()[i]);
+        }
+        return result;
+    }
+
+    private static int numberOfSubstring(String s, char c) {
+        String t = new StringBuilder(s).append(c).reverse().toString();
+        int prefixMax = Arrays.stream(prefixFunction(t)).max().orElse(0);
+        return s.length() + 1 - prefixMax;
+    }
+
     private static int[] prefixFunction(String str) {
         int[] prefixFunc = new int[str.length()];
         for (int i = 1; i < str.length(); i++) {
@@ -18,22 +39,5 @@ public class Case5730 {
             prefixFunc[i] = j;
         }
         return prefixFunc;
-    }
-
-    private static int numberOfSubstring(String s, char c) {
-        String t = new StringBuilder(s).append(c).reverse().toString();
-        int prefixMax = Arrays.stream(prefixFunction(t)).max().orElse(0);
-        return s.length() + 1 - prefixMax;
-    }
-
-    public static void main(String[] args) {
-        // https://e-maxx.ru/algo/prefix_function can help
-        Scanner sc = new Scanner(System.in);
-        String s = sc.nextLine();
-        int result = 2;
-        for (int i = 1; i < s.length(); i++) {
-            result += numberOfSubstring(s.substring(0, i), s.toCharArray()[i]);
-        }
-        System.out.println(result);
     }
 }

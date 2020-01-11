@@ -7,6 +7,45 @@ import java.util.stream.Collectors;
 
 public class Case5729 {
 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String p = sc.nextLine();
+        String t = sc.nextLine();
+
+        List<Integer> result = proceed(p, t);
+        if (result == null) {
+            return;
+        }
+        System.out.println(result.size());
+        System.out.println(result.stream().map(String::valueOf).collect(Collectors.joining(" ")));
+    }
+
+    static List<Integer> proceed(String p, String t) {
+        if (t.isEmpty()) {
+            System.out.println(0);
+            System.out.println();
+            return null;
+        }
+
+        if (p.isEmpty()) {
+            System.out.println(1);
+            System.out.println(0);
+            return null;
+        }
+
+        String str = p + "@" + t;
+        int[] prefixFunc = prefixFunction(str);
+        List<Integer> result = new ArrayList<>();
+        int lastFoundIndex = -p.length();
+        for (int i = 0; i < prefixFunc.length; i++) {
+            if (prefixFunc[i] == p.length() && p.length() <= (i - lastFoundIndex)) {
+                result.add(i - p.length() * 2);
+                lastFoundIndex = i;
+            }
+        }
+        return result;
+    }
+
     private static int[] prefixFunction(String str) {
         int[] prefixFunc = new int[str.length()];
         for (int i = 1; i < str.length(); i++) {
@@ -20,36 +59,5 @@ public class Case5729 {
             prefixFunc[i] = j;
         }
         return prefixFunc;
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String p = sc.nextLine();
-        String t = sc.nextLine();
-
-        if (t.isEmpty()) {
-            System.out.println(0);
-            System.out.println();
-            return;
-        }
-
-        if (p.isEmpty()) {
-            System.out.println(1);
-            System.out.println(0);
-            return;
-        }
-
-        String str = p + "@" + t;
-        int[] prefixFunc = prefixFunction(str);
-        List<Integer> result = new ArrayList<>();
-        int lastFoundIndex = -p.length();
-        for (int i = 0; i < prefixFunc.length; i++) {
-            if (prefixFunc[i] == p.length() && p.length() <= (i - lastFoundIndex)) {
-                result.add(i - p.length() * 2);
-                lastFoundIndex = i;
-            }
-        }
-        System.out.println(result.size());
-        System.out.println(result.stream().map(String::valueOf).collect(Collectors.joining(" ")));
     }
 }
