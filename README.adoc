@@ -4,6 +4,10 @@
 Integer types and operations arrow right Snail
 https://hyperskill.org/learn/step/2221
 
+== case3825
+Jump search in Java → Print comparisons
+https://hyperskill.org/learn/step/3825
+
 == case3791
 Processing strings  -> Create a euphonious word
 https://hyperskill.org/learn/step/3791
