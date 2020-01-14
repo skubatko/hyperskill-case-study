@@ -8,8 +8,8 @@ import java.util.List;
 public class PhoneBookStage1App {
 
     public static void main(String[] args) throws IOException {
-        List<String> directory = Files.readAllLines(Paths.get("directory.txt"));
-        List<String> find = Files.readAllLines(Paths.get("find.txt"));
+        List<String> directory = Files.readAllLines(Paths.get("/Users/TeSSerA/Downloads/directory.txt"));
+        List<String> find = Files.readAllLines(Paths.get("/Users/TeSSerA/Downloads/find.txt"));
 
         long startTime = System.currentTimeMillis();
         System.out.println("Start searching...");
