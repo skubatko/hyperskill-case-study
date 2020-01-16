@@ -4,6 +4,10 @@
 Integer types and operations arrow right Snail
 https://hyperskill.org/learn/step/2221
 
+== case3126
+Recursion → Number of decompositions
+https://hyperskill.org/learn/step/3126
+
 == case3825
 Jump search in Java → Print comparisons
 https://hyperskill.org/learn/step/3825
