@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.skubatko.dev.hyperskill</groupId>
-    <artifactId>root</artifactId>
+    <artifactId>hyperskill-case-study</artifactId>
     <version>1.0.0</version>
     <name>${project.artifactId}</name>
     <packaging>pom</packaging>
@@ -32,6 +32,7 @@
         <module>case3824</module>
         <module>project-phone-book-stage2</module>
         <module>case3126</module>
+        <module>case3131</module>
     </modules>
 
     <developers>
