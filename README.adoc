@@ -8,6 +8,10 @@ https://hyperskill.org/learn/step/2221
 Recursion → Number of decompositions
 https://hyperskill.org/learn/step/3126
 
+== case3130
+Binary search in Java → Find array elements in another array
+https://hyperskill.org/learn/step/3130
+
 == case3131
 Binary search in Java → Find a fixed point in an array
 https://hyperskill.org/learn/step/3131
