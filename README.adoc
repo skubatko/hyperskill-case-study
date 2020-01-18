@@ -68,6 +68,10 @@ https://hyperskill.org/learn/step/5730
 Knuth-Morris-Pratt algorithm in Java → Finding substrings in a matrix
 https://hyperskill.org/learn/step/5731
 
+== case6951
+Hash table in Java → Phone Book
+https://hyperskill.org/learn/step/6951
+
 == case7259
 Fixed-size array → Calculations
 https://hyperskill.org/learn/step/7259

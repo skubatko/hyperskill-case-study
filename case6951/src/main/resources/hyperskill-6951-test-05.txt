@@ -1,0 +1,25 @@
+24
+remove 1
+remove 2
+remove 3
+get 1
+get 2
+get 3
+put 1 0001
+put 2 0002
+put 3 0003
+get 3
+get 1
+get 2
+remove 1
+remove 3
+remove 2
+get 3
+get 1
+get 2
+put 1 0010
+put 3 0030
+put 2 0020
+get 3
+get 2
+get 1
