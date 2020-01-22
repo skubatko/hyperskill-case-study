@@ -4,6 +4,10 @@
 Integer types and operations arrow right Snail
 https://hyperskill.org/learn/step/2221
 
+== case2784
+Queue and Stack → Getting the max element of a stack
+https://hyperskill.org/learn/step/2784
+
 == case3126
 Recursion → Number of decompositions
 https://hyperskill.org/learn/step/3126
