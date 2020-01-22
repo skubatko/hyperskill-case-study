@@ -16,13 +16,17 @@ https://hyperskill.org/learn/step/3130
 Binary search in Java → Find a fixed point in an array
 https://hyperskill.org/learn/step/3131
 
-== case3825
-Jump search in Java → Print comparisons
-https://hyperskill.org/learn/step/3825
+== case3658
+Java → Html Parser
+https://hyperskill.org/learn/step/3658
 
 == case3791
 Processing strings  -> Create a euphonious word
 https://hyperskill.org/learn/step/3791
+
+== case3825
+Jump search in Java → Print comparisons
+https://hyperskill.org/learn/step/3825
 
 == case4838
 Reading files -> World population
