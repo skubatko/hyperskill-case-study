@@ -44,7 +44,7 @@ public class BlockchainStage3App {
 
         @Override
         public void run() {
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 10; i++) {
                 blockchain.addBlock(id);
                 blockchain.validate();
             }
@@ -56,20 +56,44 @@ public class BlockchainStage3App {
         private volatile Block last;
         private volatile int zeros;
 
-        public synchronized void setZeros(int zeros) {
-            this.zeros = zeros;
-        }
+        private final Object lock = new Object();
 
-        public synchronized void addBlock(int createdBy) {
+        public void addBlock(int createdBy) {
             Block block = new Block();
 
-            hash(block, zeros);
+            hash(block);
 
-            block.id = last != null ? last.id + 1 : 1;
-            block.timestamp = new Date().getTime();
-            block.parentBlockHash = last != null ? last.hash : "0";
-            block.createdBy = createdBy;
+            synchronized (lock) {
+                if (!(blockValid(block))) {
+                    return;
+                }
 
+                block.id = last != null ? last.id + 1 : 1;
+                block.timestamp = new Date().getTime();
+                block.parentBlockHash = last != null ? last.hash : "0";
+                block.createdBy = createdBy;
+
+                adjustZeros(block);
+
+                chain(block);
+
+                System.out.println(">>> generated" + block);
+            }
+        }
+
+        private void adjustZeros(Block block) {
+            if (block.generationTimeInSec < 10) {
+                zeros++;
+                block.zerosStatus = zeros;
+            } else if (block.generationTimeInSec < 60) {
+                block.zerosStatus = 0;
+            } else {
+                zeros--;
+                block.zerosStatus = -1;
+            }
+        }
+
+        private void chain(Block block) {
             if (last != null) {
                 last.next = block;
             } else {
@@ -77,6 +101,15 @@ public class BlockchainStage3App {
             }
 
             last = block;
+        }
+
+        public boolean blockValid(Block block) {
+            StringBuilder patternBuilder = new StringBuilder();
+            for (int i = 0; i < zeros; i++) {
+                patternBuilder.append("0");
+            }
+            String pattern = patternBuilder.toString();
+            return block.hash.substring(0, zeros).equals(pattern);
         }
 
         public synchronized void validate() {
@@ -89,7 +122,7 @@ public class BlockchainStage3App {
             }
         }
 
-        private static void hash(Block block, int zeros) {
+        private void hash(Block block) {
             long startTime = System.currentTimeMillis();
 
             String base = String.valueOf(block.id);
@@ -144,19 +177,30 @@ public class BlockchainStage3App {
             private int magicNumber;
             private long generationTimeInSec;
             private int createdBy;
+            private int zerosStatus;
 
             @Override
             public String toString() {
+                String zerosStatusString = "";
+                if (zerosStatus < 0) {
+                    zerosStatusString = "N was decreased by 1";
+                } else if (zerosStatus == 0) {
+                    zerosStatusString = "N stays the same";
+                } else {
+                    zerosStatusString = "N was increased to " + zerosStatus;
+                }
+
                 return "\n" +
-                               "Block:" + '\n' +
-                               "Created by miner # " + createdBy + '\n' +
-                               "Id: " + id + '\n' +
-                               "Timestamp: " + timestamp + '\n' +
-                               "Magic number: " + magicNumber + '\n' +
-                               "Hash of the previous block:\n" + parentBlockHash + '\n' +
-                               "Hash of the block:\n" + hash + '\n' +
-                               "Block was generating for " + generationTimeInSec + " seconds" +
-                               "";
+                        "Block:" + '\n' +
+                        "Created by miner # " + createdBy + '\n' +
+                        "Id: " + id + '\n' +
+                        "Timestamp: " + timestamp + '\n' +
+                        "Magic number: " + magicNumber + '\n' +
+                        "Hash of the previous block:\n" + parentBlockHash + '\n' +
+                        "Hash of the block:\n" + hash + '\n' +
+                        "Block was generating for " + generationTimeInSec + " seconds" + '\n' +
+                        zerosStatusString +
+                        "";
             }
         }
     }
