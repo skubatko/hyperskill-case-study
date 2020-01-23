@@ -18,7 +18,7 @@ public class BlockchainStage3App {
     public static void main(String[] args) {
         Blockchain blockchain = new Blockchain();
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             blockchain.addBlock();
             blockchain.validate();
         }
