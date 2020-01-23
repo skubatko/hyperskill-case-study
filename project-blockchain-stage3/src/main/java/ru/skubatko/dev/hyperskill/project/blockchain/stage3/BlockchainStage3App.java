@@ -2,28 +2,25 @@ package ru.skubatko.dev.hyperskill.project.blockchain.stage3;
 
 import java.io.Serializable;
 import java.security.MessageDigest;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Future;
 
 public class BlockchainStage3App {
 
     public static void main(String[] args) {
         Blockchain blockchain = new Blockchain();
-        ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
-        for (int i = 1; i < 10; i++) {
-            executor.submit(new Miner(i, blockchain));
-        }
-
-        executor.shutdown();
-        try {
-            executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        for (int i = 0; i < 5; i++) {
+            blockchain.addBlock();
+            blockchain.validate();
         }
 
         Blockchain.Block block = blockchain.first;
@@ -31,61 +28,43 @@ public class BlockchainStage3App {
             System.out.println(block);
             block = block.next;
         }
-    }
 
-    private static class Miner implements Runnable {
-        private int id;
-        private Blockchain blockchain;
-
-        public Miner(int id, Blockchain blockchain) {
-            this.id = id;
-            this.blockchain = blockchain;
-        }
-
-        @Override
-        public void run() {
-            for (int i = 0; i < 10; i++) {
-                blockchain.addBlock(id);
-                blockchain.validate();
-            }
-        }
+        blockchain.shutdown();
     }
 
     private static class Blockchain implements Serializable {
-        private volatile Block first;
-        private volatile Block last;
-        private volatile int zeros;
+        private Block first;
+        private Block last;
+        private int zeros;
 
-        private final Object lock = new Object();
+        private ExecutorService executor;
 
-        public void addBlock(int createdBy) {
+        public Blockchain() {
+            executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+        }
+
+        public void addBlock() {
             Block block = new Block();
+            block.id = last != null ? last.id + 1 : 1;
 
             hash(block);
 
-            synchronized (lock) {
-                if (!(blockValid(block))) {
-                    return;
-                }
+            block.timestamp = new Date().getTime();
+            block.parentBlockHash = last != null ? last.hash : "0";
 
-                block.id = last != null ? last.id + 1 : 1;
-                block.timestamp = new Date().getTime();
-                block.parentBlockHash = last != null ? last.hash : "0";
-                block.createdBy = createdBy;
-
+            if (blockValid(block)) {
                 adjustZeros(block);
-
                 chain(block);
-
-                System.out.println(">>> generated" + block);
             }
+
+            System.out.println("\n>>> generated" + block);
         }
 
         private void adjustZeros(Block block) {
-            if (block.generationTimeInSec < 10) {
+            if (block.generationTimeInSec < 1) {
                 zeros++;
                 block.zerosStatus = zeros;
-            } else if (block.generationTimeInSec < 60) {
+            } else if (block.generationTimeInSec < 5) {
                 block.zerosStatus = 0;
             } else {
                 zeros--;
@@ -103,7 +82,7 @@ public class BlockchainStage3App {
             last = block;
         }
 
-        public boolean blockValid(Block block) {
+        private boolean blockValid(Block block) {
             StringBuilder patternBuilder = new StringBuilder();
             for (int i = 0; i < zeros; i++) {
                 patternBuilder.append("0");
@@ -112,8 +91,16 @@ public class BlockchainStage3App {
             return block.hash.substring(0, zeros).equals(pattern);
         }
 
-        public synchronized void validate() {
+        public void validate() {
+            if (first == null) {
+                return;
+            }
+
             Block block = first.next;
+            if (block == null) {
+                return;
+            }
+
             while (block.next != null) {
                 if (!(Objects.equals(block.hash, block.next.parentBlockHash))) {
                     throw new RuntimeException(block.toString());
@@ -123,49 +110,41 @@ public class BlockchainStage3App {
         }
 
         private void hash(Block block) {
+            List<Future<HashInfo>> futures = new ArrayList<>(10);
+
             long startTime = System.currentTimeMillis();
-
-            String base = String.valueOf(block.id);
-
-            StringBuilder patternBuilder = new StringBuilder();
-            for (int i = 0; i < zeros; i++) {
-                patternBuilder.append("0");
+            for (int i = 1; i < 10; i++) {
+                futures.add(executor.submit(new Miner(i, block.id, zeros)));
             }
-            String pattern = patternBuilder.toString();
 
-            Random random = new Random();
-            int magicNumber;
-            String hash;
+            boolean isDone = false;
             do {
-                magicNumber = random.nextInt(Integer.MAX_VALUE);
-                hash = applySha256(base + magicNumber);
-            } while (!(hash.substring(0, zeros).equals(pattern)));
-
-            block.hash = hash;
-            block.magicNumber = magicNumber;
+                for (Future<HashInfo> future : futures) {
+                    if (future.isDone()) {
+                        try {
+                            HashInfo hashInfo = future.get();
+                            block.hash = hashInfo.hash;
+                            block.magicNumber = hashInfo.magicNumber;
+                            block.createdBy = hashInfo.minerId;
+                            isDone = true;
+                            break;
+                        } catch (InterruptedException | ExecutionException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            } while (!(isDone));
 
             long endTime = System.currentTimeMillis();
             block.generationTimeInSec = (endTime - startTime) / 1000;
+
+            for (Future<HashInfo> future : futures) {
+                future.cancel(true);
+            }
         }
 
-        /* Applies Sha256 to a string and returns a hash. */
-        private static String applySha256(String input) {
-            try {
-                MessageDigest digest = MessageDigest.getInstance("SHA-256");
-                /* Applies sha256 to our input */
-                byte[] hash = digest.digest(input.getBytes("UTF-8"));
-                StringBuilder hexString = new StringBuilder();
-                for (byte elem : hash) {
-                    String hex = Integer.toHexString(0xff & elem);
-                    if (hex.length() == 1) {
-                        hexString.append('0');
-                    }
-                    hexString.append(hex);
-                }
-                return hexString.toString();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+        public void shutdown() {
+            executor.shutdown();
         }
 
         private static class Block implements Serializable {
@@ -201,6 +180,72 @@ public class BlockchainStage3App {
                         "Block was generating for " + generationTimeInSec + " seconds" + '\n' +
                         zerosStatusString +
                         "";
+            }
+        }
+
+        private static class Miner implements Callable<HashInfo> {
+            private int id;
+            private int blockId;
+            private int zeros;
+
+            public Miner(int id, int blockId, int zeros) {
+                this.id = id;
+                this.blockId = blockId;
+                this.zeros = zeros;
+            }
+
+            @Override
+            public HashInfo call() {
+                String base = String.valueOf(blockId);
+
+                StringBuilder patternBuilder = new StringBuilder();
+                for (int i = 0; i < zeros; i++) {
+                    patternBuilder.append("0");
+                }
+                String pattern = patternBuilder.toString();
+
+                Random random = new Random();
+                int magicNumber;
+                String hash;
+                do {
+                    magicNumber = random.nextInt(Integer.MAX_VALUE);
+                    hash = applySha256(base + magicNumber);
+                } while (!(hash.substring(0, zeros).equals(pattern))
+                        && !(Thread.interrupted()));
+
+                return new HashInfo(id, hash, magicNumber);
+            }
+
+            /* Applies Sha256 to a string and returns a hash. */
+            private static String applySha256(String input) {
+                try {
+                    MessageDigest digest = MessageDigest.getInstance("SHA-256");
+                    /* Applies sha256 to our input */
+                    byte[] hash = digest.digest(input.getBytes("UTF-8"));
+                    StringBuilder hexString = new StringBuilder();
+                    for (byte elem : hash) {
+                        String hex = Integer.toHexString(0xff & elem);
+                        if (hex.length() == 1) {
+                            hexString.append('0');
+                        }
+                        hexString.append(hex);
+                    }
+                    return hexString.toString();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        private static class HashInfo {
+            private int minerId;
+            private String hash;
+            private int magicNumber;
+
+            public HashInfo(int minerId, String hash, int magicNumber) {
+                this.minerId = minerId;
+                this.hash = hash;
+                this.magicNumber = magicNumber;
             }
         }
     }
