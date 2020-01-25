@@ -20,6 +20,10 @@ https://hyperskill.org/learn/step/3130
 Binary search in Java → Find a fixed point in an array
 https://hyperskill.org/learn/step/3131
 
+== case3655
+Java → Sherlock Holmes - 2
+https://hyperskill.org/learn/step/3655
+
 == case3658
 Java → Html Parser
 https://hyperskill.org/learn/step/3658
