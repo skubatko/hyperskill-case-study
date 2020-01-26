@@ -4,6 +4,10 @@
 Integer types and operations arrow right Snail
 https://hyperskill.org/learn/step/2221
 
+== case2484
+Java → Multiset
+https://hyperskill.org/learn/step/2484
+
 == case2784
 Queue and Stack → Getting the max element of a stack
 https://hyperskill.org/learn/step/2784
