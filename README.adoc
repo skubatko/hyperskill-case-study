@@ -40,6 +40,11 @@ https://hyperskill.org/learn/step/3791
 Jump search in Java → Print comparisons
 https://hyperskill.org/learn/step/3825
 
+== case3830
+Java → Functional streams → Map and flatMap
+Java → Count words without repetitions
+https://hyperskill.org/learn/step/3830
+
 == case4838
 Reading files -> World population
 https://hyperskill.org/learn/step/4838

@@ -44,6 +44,7 @@
         <module>project-blockchain-stage3</module>
         <module>case3655</module>
         <module>case2484</module>
+        <module>case3830</module>
     </modules>
 
     <developers>
