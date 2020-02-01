@@ -4,6 +4,11 @@
 Integer types and operations arrow right Snail
 https://hyperskill.org/learn/step/2221
 
+== case2435
+Java → Functional streams → Currying
+Java → Reducer operator
+https://hyperskill.org/learn/step/2435
+
 == case2484
 Java → Multiset
 https://hyperskill.org/learn/step/2484
