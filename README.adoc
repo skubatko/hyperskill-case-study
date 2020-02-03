@@ -9,6 +9,11 @@ Java → Functional streams → Currying
 Java → Reducer operator
 https://hyperskill.org/learn/step/2435
 
+== case2449
+Java → Functional streams → Stream pipelines
+Java → The ten most frequent words
+https://hyperskill.org/learn/step/2449
+
 == case2484
 Java → Multiset
 https://hyperskill.org/learn/step/2484
