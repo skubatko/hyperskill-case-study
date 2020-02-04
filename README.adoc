@@ -55,6 +55,10 @@ Java → Functional streams → Map and flatMap
 Java → Count words without repetitions
 https://hyperskill.org/learn/step/3830
 
+== case4345
+Using streams many times
+https://hyperskill.org/learn/daily/4345
+
 == case4838
 Reading files -> World population
 https://hyperskill.org/learn/step/4838
