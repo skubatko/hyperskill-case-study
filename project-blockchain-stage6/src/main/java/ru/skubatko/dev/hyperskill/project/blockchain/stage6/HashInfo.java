@@ -1,6 +1,6 @@
 package ru.skubatko.dev.hyperskill.project.blockchain.stage6;
 
-class HashInfo {
+public class HashInfo {
     private int minerId;
     private String hash;
     private int magicNumber;

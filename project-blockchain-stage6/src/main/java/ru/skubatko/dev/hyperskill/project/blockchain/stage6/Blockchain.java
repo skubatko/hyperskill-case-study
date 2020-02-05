@@ -128,7 +128,7 @@ public class Blockchain {
     }
 
     private void adjustZeros(Block block) {
-        if (zeros > 3) {
+        if (zeros > 4) {
             zeros--;
             block.setZerosStatus(-1);
             return;

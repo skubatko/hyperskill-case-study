@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 import java.util.Random;
 import java.util.concurrent.Callable;
 
-class Miner extends Account implements Callable<HashInfo> {
+public class Miner extends Account implements Callable<HashInfo> {
     private int id;
     private int blockId;
     private int zeros;
