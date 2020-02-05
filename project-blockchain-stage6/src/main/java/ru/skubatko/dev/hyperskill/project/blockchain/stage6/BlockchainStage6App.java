@@ -14,12 +14,11 @@ public class BlockchainStage6App {
 
         Block block = blockchain.getFirst();
         for (int i = 0; i < 15; i++) {
-//			System.out.println(block);
+			System.out.println(block);
             block = block.getNext();
         }
 
         life.shutdown();
         blockchain.shutdown();
     }
-
 }

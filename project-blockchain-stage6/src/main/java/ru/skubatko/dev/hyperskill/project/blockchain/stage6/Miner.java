@@ -12,20 +12,10 @@ class Miner extends Account implements Callable<HashInfo> {
     public Miner(int id) {
         super("miner" + id);
         this.id = id;
-        this.blockId = blockId;
-        this.zeros = zeros;
-    }
-
-    public int getBlockId() {
-        return blockId;
     }
 
     public void setBlockId(int blockId) {
         this.blockId = blockId;
-    }
-
-    public int getZeros() {
-        return zeros;
     }
 
     public void setZeros(int zeros) {

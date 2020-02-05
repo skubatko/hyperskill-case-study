@@ -28,16 +28,20 @@ public class Life implements Runnable {
     private void doTransaction() {
         try {
             List<Account> accounts = blockchain.getAccounts();
-            Account from = accounts.get(random.nextInt(accounts.size()));
+
+            Account from;
             Account to;
+            int amount;
             do {
+                from = accounts.get(random.nextInt(accounts.size()));
                 to = accounts.get(random.nextInt(accounts.size()));
-            } while (Objects.equals(to, from));
-            int amount = 10 + random.nextInt(90);
+                amount = 10 + random.nextInt(90);
+            } while (Objects.equals(to, from) || from.getBalance() < amount);
+
             from.setBalance(from.getBalance() - amount);
             to.setBalance(to.getBalance() + amount);
             blockchain.addTransaction(from.getName(), to.getName(), amount);
-            Thread.sleep(random.nextInt(500));
+            Thread.sleep(random.nextInt(1000));
         } catch (InterruptedException e) {
             // empty
         }

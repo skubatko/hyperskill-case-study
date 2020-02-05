@@ -4,7 +4,6 @@ import java.security.PublicKey;
 
 public class Transaction {
     private long id;
-    private String text;
     private String from;
     private String to;
     private int amount;
@@ -23,10 +22,6 @@ public class Transaction {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 
     public byte[] getSignature() {

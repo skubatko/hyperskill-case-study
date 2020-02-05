@@ -85,8 +85,11 @@ public class Blockchain {
         }
 
         long transactionId = isNotFirst
-                ? block.getTransactions().stream().mapToLong(Transaction::getId).max().orElse(last.getMaxTransactionId())
-                : 0L;
+                             ? block.getTransactions().stream()
+                                       .mapToLong(Transaction::getId)
+                                       .max()
+                                       .orElse(last.getMaxTransactionId())
+                             : 0L;
         block.setMaxTransactionId(transactionId);
 
         hash(block);
@@ -125,6 +128,12 @@ public class Blockchain {
     }
 
     private void adjustZeros(Block block) {
+        if (zeros > 3) {
+            zeros--;
+            block.setZerosStatus(-1);
+            return;
+        }
+
         long generationTimeInSec = block.getGenerationTimeInSec();
         if (generationTimeInSec < 1) {
             zeros++;
@@ -187,29 +196,29 @@ public class Blockchain {
         try {
             Signature signature = Signature.getInstance("SHA1withRSA");
             boolean isVerified = transactions.stream()
-                    .peek(m -> {
-                        try {
-                            signature.initVerify(m.getPublicKey());
-                        } catch (InvalidKeyException e) {
-                            // empty
-                        }
-                    })
-                    .peek(m -> {
-                        try {
-                            signature.update((m.getId() + m.toString()).getBytes());
-                        } catch (SignatureException e) {
-                            // empty
-                        }
-                    })
-                    .map(m -> {
-                        try {
-                            return signature.verify(m.getSignature());
-                        } catch (SignatureException e) {
-                            // empty
-                        }
-                        return true;
-                    })
-                    .reduce(true, (acc, elem) -> acc && elem);
+                                         .peek(m -> {
+                                             try {
+                                                 signature.initVerify(m.getPublicKey());
+                                             } catch (InvalidKeyException e) {
+                                                 // empty
+                                             }
+                                         })
+                                         .peek(m -> {
+                                             try {
+                                                 signature.update((m.getId() + m.toString()).getBytes());
+                                             } catch (SignatureException e) {
+                                                 // empty
+                                             }
+                                         })
+                                         .map(m -> {
+                                             try {
+                                                 return signature.verify(m.getSignature());
+                                             } catch (SignatureException e) {
+                                                 // empty
+                                             }
+                                             return true;
+                                         })
+                                         .reduce(true, (acc, elem) -> acc && elem);
             if (!isVerified) {
                 throw new RuntimeException(block.toString());
             }
@@ -220,9 +229,9 @@ public class Blockchain {
 
     private void validateMessageId(Block block, long maxId) {
         long wrongId = block.getTransactions().stream()
-                .mapToLong(Transaction::getId)
-                .filter(id -> id <= maxId)
-                .count();
+                               .mapToLong(Transaction::getId)
+                               .filter(id -> id <= maxId)
+                               .count();
         boolean isVerified = wrongId == 0L;
         if (!isVerified) {
             throw new RuntimeException(block.toString());
@@ -234,7 +243,10 @@ public class Blockchain {
 
         long startTime = System.currentTimeMillis();
         for (int i = 1; i < 10; i++) {
-            futures.add(executor.submit(miners.get(i)));
+            Miner miner = miners.get(i);
+            miner.setBlockId(block.getId());
+            miner.setZeros(zeros);
+            futures.add(executor.submit(miner));
         }
 
         boolean isDone = false;
