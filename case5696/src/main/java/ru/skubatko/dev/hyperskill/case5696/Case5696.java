@@ -8,6 +8,7 @@ public class Case5696 {
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
         int n = sc.nextInt();
+        sc.nextLine();
         String[] words = new String[n];
         for (int i = 0; i < n; i++) {
             words[i] = sc.nextLine();
@@ -22,8 +23,7 @@ public class Case5696 {
         String t = "";
         int ed = Integer.MAX_VALUE;
 
-        for (int i = 0; i < words.length; i++) {
-            String word = words[i];
+        for (String word : words) {
             int wordEd = editDistance(s, word);
             if (wordEd < ed) {
                 ed = wordEd;
