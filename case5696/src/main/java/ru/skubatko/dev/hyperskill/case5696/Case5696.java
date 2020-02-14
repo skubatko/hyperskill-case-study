@@ -22,7 +22,8 @@ public class Case5696 {
         String t = "";
         int ed = Integer.MAX_VALUE;
 
-        for (String word : words) {
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i];
             int wordEd = editDistance(s, word);
             if (wordEd < ed) {
                 ed = wordEd;

@@ -23,4 +23,15 @@ public class Case5696Test {
         assertThat(result.ed).isEqualTo(1);
         assertThat(result.t).isEqualTo("sad");
     }
+
+    @Test
+    public void proceedCase2() {
+        String s = "asa";
+        String[] words = {"ama", "aba", "ada"};
+
+        Result result = proceed(s, words);
+
+        assertThat(result.ed).isEqualTo(1);
+        assertThat(result.t).isEqualTo("ada");
+    }
 }
