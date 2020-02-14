@@ -79,6 +79,10 @@ https://hyperskill.org/learn/step/4841
 Reading files -> Find the greatest number in a file
 https://hyperskill.org/learn/step/4842
 
+== case5696
+Java → Implementation of basic algorithms → Edit distance in Java
+Java → Edit distance with a scoring matrix
+
 == case5718
 Searching a substring in Java  -> Non-overlapping occurrences
 https://hyperskill.org/learn/step/5718
