@@ -79,6 +79,10 @@ https://hyperskill.org/learn/step/4841
 Reading files -> Find the greatest number in a file
 https://hyperskill.org/learn/step/4842
 
+== case5695
+Java → Implementation of basic algorithms → Edit distance in Java
+Java → Edit distance with insertions and deletions
+
 == case5696
 Java → Implementation of basic algorithms → Edit distance in Java
 Java → Edit distance with a scoring matrix

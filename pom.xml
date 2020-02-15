@@ -53,6 +53,7 @@
         <module>project-blockchain-stage5</module>
         <module>project-blockchain-stage6</module>
         <module>case5696</module>
+        <module>case5695</module>
     </modules>
 
     <developers>
