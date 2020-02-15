@@ -1,9 +1,0 @@
-= Reading files -> Find the greatest number in a file
-
-https://hyperskill.org/learn/step/4842
-
-There is a file containing a sequence of integers separated by spaces.
-
-Download it and write a Java program that finds the greatest number in this file.
-
-Enter the found result.
