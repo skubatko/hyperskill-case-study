@@ -87,6 +87,10 @@ Java → Edit distance with insertions and deletions
 Java → Implementation of basic algorithms → Edit distance in Java
 Java → Edit distance with a scoring matrix
 
+== case5697
+Java → Implementation of basic algorithms → Edit distance in Java
+Java → Efficient memory consumption
+
 == case5718
 Searching a substring in Java  -> Non-overlapping occurrences
 https://hyperskill.org/learn/step/5718
