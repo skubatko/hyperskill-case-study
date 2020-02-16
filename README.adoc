@@ -122,3 +122,8 @@ https://hyperskill.org/learn/step/6951
 == case7259
 Fixed-size array → Calculations
 https://hyperskill.org/learn/step/7259
+
+== case8103
+Java → Implementation of basic algorithms → Dynamic array in Java
+Java → Allocated memory
+https://hyperskill.org/learn/daily/8103
