@@ -94,7 +94,7 @@ public class Case5704 {
                 ssBuilder.append(s.charAt(i - 1));
                 ttBuilder.append("-");
                 uuBuilder.append("-");
-                j -= 1;
+                i -= 1;
             } else if (i > 0 && j > 0
                     && d[i][j][k] == d[i - 1][j - 1][k] + match(s.charAt(i - 1), t.charAt(j - 1)) * subWeight) {
                 ssBuilder.append(s.charAt(i - 1));
@@ -105,7 +105,7 @@ public class Case5704 {
                 ssBuilder.append("-");
                 ttBuilder.append("-");
                 uuBuilder.append(u.charAt(j - 1));
-                j -= 1;
+                k -= 1;
             } else if (j > 0 && k > 0
                     && d[i][j][k] == d[i][j - 1][k - 1] + match(t.charAt(j - 1), u.charAt(k - 1)) * subWeight) {
                 ttBuilder.append(t.charAt(j - 1));
@@ -116,8 +116,8 @@ public class Case5704 {
                     && d[i][j][k] == d[i - 1][j][k - 1] + match(u.charAt(k - 1), s.charAt(i - 1)) * subWeight) {
                 uuBuilder.append(u.charAt(k - 1));
                 ssBuilder.append(s.charAt(i - 1));
+                k -= 1;
                 i -= 1;
-                j -= 1;
             }
         }
 
