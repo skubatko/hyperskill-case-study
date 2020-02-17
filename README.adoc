@@ -96,6 +96,11 @@ Java → Implementation of basic algorithms → Edit distance alignment in Java
 Java → An approximate matching
 https://hyperskill.org/learn/step/5703
 
+== case5704
+Java → Implementation of basic algorithms → Edit distance alignment in Java
+Java → Multiple sequence alignment
+https://hyperskill.org/learn/step/5704
+
 == case5718
 Searching a substring in Java  -> Non-overlapping occurrences
 https://hyperskill.org/learn/step/5718
