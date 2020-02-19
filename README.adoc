@@ -137,3 +137,7 @@ https://hyperskill.org/learn/step/7259
 Java → Implementation of basic algorithms → Dynamic array in Java
 Java → Allocated memory
 https://hyperskill.org/learn/daily/8103
+
+== case8294
+Java → Implementation of basic algorithms → Doubly linked list in Java
+Doubly linked list in Java → Simple doubly linked list

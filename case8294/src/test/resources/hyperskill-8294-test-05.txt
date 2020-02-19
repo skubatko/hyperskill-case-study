@@ -1,0 +1,77 @@
+76
+addLast 2
+addFirst 4
+removeLast
+removeFirst
+addLast 4
+reverse
+addFirst 23
+addLast 43
+removeLast
+addFirst 34
+reverse
+removeFirst
+addLast 5
+addFirst 3
+addLast 23
+reverse
+removeFirst
+addFirst 25
+addLast 46
+addFirst 3
+reverse
+addLast 2
+addFirst 4
+removeLast
+removeFirst
+addLast 4
+reverse
+addFirst 23
+addLast 43
+removeLast
+addFirst 34
+reverse
+removeFirst
+addLast 5
+addFirst 3
+addLast 23
+reverse
+removeFirst
+addFirst 3
+reverse
+addLast 2
+addFirst 4
+removeLast
+removeFirst
+addLast 4
+reverse
+addFirst 36
+reverse
+addLast 262
+addFirst 4
+removeLast
+removeFirst
+addLast 345
+reverse
+addFirst 543
+addLast 43
+removeLast
+addFirst 87
+reverse
+removeFirst
+addLast 5
+addFirst 47
+addLast 23
+reverse
+removeFirst
+addFirst 23
+addLast 436
+removeLast
+addFirst 38
+reverse
+removeFirst
+addLast 551
+addFirst 3
+addLast 23
+reverse
+removeFirst
