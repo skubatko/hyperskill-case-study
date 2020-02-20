@@ -1,6 +1,5 @@
 package ru.skubatko.dev.hyperskill.case5722.case8296;
 
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Case8296 {
@@ -17,12 +16,14 @@ public class Case8296 {
 
         for (int i = 0; i < k; i++) {
             String command = sc.next();
+            int distance = sc.nextInt();
+
             switch (command) {
                 case "r":
-                    list.removeRight(sc.nextInt());
+                    list.removeRight(distance);
                     break;
                 case "l":
-                    list.removeLeft(sc.nextInt());
+                    list.removeLeft(distance);
                     break;
                 default:
                     break;
@@ -33,91 +34,137 @@ public class Case8296 {
     }
 
     static class DoublyCircularLinkedList<E> {
-        private Node<E> first;
         private Node<E> head;
-        private int size;
+        private Node<E> tail;
+        private Node<E> curr;
+        int size;
 
         DoublyCircularLinkedList() {
             size = 0;
         }
 
-        boolean isEmpty() {
-            return size == 0;
-        }
-
         void add(E elem) {
-            Node<E> tmp = new Node<>(elem);
+            Node<E> tmp = new Node<>(elem, head, tail);
 
-            if (head != null) {
-                tmp.next = head;
-                tmp.prev = head.prev;
-                head.prev.next = tmp;
-                head.prev = tmp;
+            if (isEmpty()) {
+                addFirst(tmp);
             } else {
-                head = tmp;
-                head.next = head;
-                head.prev = head;
-                first = head;
+                head.prev = tmp;
+                tail.next = tmp;
+                tail = tmp;
             }
 
             size++;
         }
 
+        private void addFirst(Node<E> node) {
+            head = node;
+            tail = node;
+            head.next = tail;
+            tail.prev = head;
+            curr = head;
+        }
+
         void removeLeft(int distance) {
-            if (isEmpty()) {
-                throw new NoSuchElementException();
-            }
+            System.out.println("<<<<<< removeLeft: " + distance);
+            System.out.println("BEFORE:");
+            display();
 
-            if (distance < 0) {
-                removeRight(Math.abs(distance));
-                return;
+            for (int i = 0; i < distance; i++) {
+                curr = curr.prev;
             }
-
-            for (int i = 0; i < distance % size; i++) {
-                head = head.prev;
-            }
-
             remove();
+
+            if (!isEmpty()) {
+                curr = curr.prev;
+            }
+
+            System.out.println("AFTER:");
+            display();
+            System.out.println();
         }
 
         void removeRight(int distance) {
-            if (isEmpty()) {
-                throw new NoSuchElementException();
-            }
+            System.out.println(">>>>>> removeRight: " + distance);
+            System.out.println("BEFORE:");
+            display();
 
-            if (distance < 0) {
-                removeLeft(Math.abs(distance));
-                return;
+            for (int i = 0; i < distance; i++) {
+                curr = curr.next;
             }
-
-            for (int i = 0; i < distance % size; i++) {
-                head = head.next;
-            }
-
             remove();
+
+            if (!isEmpty()) {
+                curr = curr.next;
+            }
+
+            System.out.println("AFTER:");
+            display();
+            System.out.println();
         }
 
         private void remove() {
-            if (size > 1) {
-                if (first == head){
-                    first = head.next;
-                }
-
-                head = head.next;
-                head.prev.prev.next = head;
-                head.prev = head.prev.prev;
-            } else {
-                head = null;
-                first = null;
+            if (isEmpty()) {
+                return;
             }
 
+            if (size == 1) {
+                removeHead();
+                return;
+            }
+
+            if (curr == head) {
+                removeFirst();
+                return;
+            }
+            if (curr == tail) {
+                removeLast();
+                return;
+            }
+
+            curr.prev.next = curr.next;
+            curr.next.prev = curr.prev;
             size--;
+        }
+
+        private void removeHead() {
+            head = null;
+            tail = null;
+            curr = null;
+            size--;
+        }
+
+        private void removeFirst() {
+            head = head.next;
+            head.prev = tail;
+            tail.next = head;
+            size--;
+        }
+
+        private void removeLast() {
+            tail = tail.prev;
+            tail.next = head;
+            head.prev = tail;
+            size--;
+        }
+
+        private boolean isEmpty() {
+            return size == 0;
+        }
+
+        void display() {
+            if (!isEmpty()) {
+                System.out.println(String.format("head=%s, tail=%s, curr=%s", head.value, tail.value, curr.value));
+            } else {
+                System.out.println(String.format("head=%s, tail=%s, curr=%s", null, null, null));
+            }
+            System.out.println(this.toString());
         }
 
         @Override
         public String toString() {
-            Node<E> iterator = first;
             StringBuilder result = new StringBuilder();
+            Node<E> iterator = head;
 
             for (int i = 0; i < size; i++) {
                 result.append(iterator.value).append(" ");
@@ -132,10 +179,10 @@ public class Case8296 {
             private Node<E> next;
             private Node<E> prev;
 
-            Node(E value) {
-                this.value = value;
-                this.next = null;
-                this.prev = null;
+            Node(E element, Node<E> next, Node<E> prev) {
+                this.value = element;
+                this.next = next;
+                this.prev = prev;
             }
         }
     }

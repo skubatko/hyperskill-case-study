@@ -28,6 +28,8 @@ public class Case8296Test {
         list.add(4);
         list.add(5);
 
+        assertThat(list.toString()).isEqualTo("1 2 3 4 5 ");
+
         list.removeRight(1);
         list.removeRight(1);
 
@@ -43,10 +45,12 @@ public class Case8296Test {
         list.add(4);
         list.add(5);
 
+        assertThat(list.toString()).isEqualTo("1 2 3 4 5 ");
+
         list.removeLeft(1);
         list.removeLeft(1);
 
-        assertThat(list.toString()).isEqualTo("1 2 3 ");
+        assertThat(list.toString()).isEqualTo("1 2 4 ");
     }
 
     @Test
@@ -57,25 +61,61 @@ public class Case8296Test {
                 this.getClass().getResourceAsStream("/" + "hyperskill-8296-test-04.txt"), StandardCharsets.UTF_8);
 
         Arrays.stream(lines.get(1).split("\\s"))
-                .map(Integer::valueOf)
+                .map(Integer::parseInt)
                 .forEach(list::add);
+
+        assertThat(list.toString()).isEqualTo("1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 ");
 
         for (int i = 2; i < lines.size(); i++) {
             String[] buf = lines.get(i).split("\\s");
 
             String command = buf[0];
+            int distance = Integer.parseInt(buf[1]);
             switch (command) {
                 case "r":
-                    list.removeRight(Integer.valueOf(buf[1]));
+                    list.removeRight(distance);
                     break;
                 case "l":
-                    list.removeLeft(Integer.valueOf(buf[1]));
+                    list.removeLeft(distance);
                     break;
                 default:
                     break;
             }
         }
 
-        assertThat(list.toString()).isEqualTo("3 4 5 7 13 ");
+        assertThat(list.toString()).isEqualTo("1 4 10 11 13 ");
+    }
+
+    @Test
+    public void testCase03() throws IOException {
+        DoublyCircularLinkedList<Integer> list = new DoublyCircularLinkedList<>();
+
+        List<String> lines = IOUtils.readLines(
+                this.getClass().getResourceAsStream("/" + "hyperskill-8296-test-03.txt"), StandardCharsets.UTF_8);
+
+        Arrays.stream(lines.get(1).split("\\s"))
+                .map(Integer::parseInt)
+                .forEach(list::add);
+
+        assertThat(list.toString()).isEqualTo("1 2 ");
+
+        for (int i = 2; i < lines.size(); i++) {
+            String[] buf = lines.get(i).split("\\s");
+
+            String command = buf[0];
+            int distance = Integer.parseInt(buf[1]);
+            switch (command) {
+                case "r":
+                    list.removeRight(distance);
+                    break;
+                case "l":
+                    list.removeLeft(distance);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        assertThat(list.toString()).isEqualTo("");
     }
 }
