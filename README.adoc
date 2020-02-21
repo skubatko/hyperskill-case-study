@@ -147,3 +147,8 @@ https://hyperskill.org/learn/step/8294
 Java → Implementation of basic algorithms → Doubly linked list in Java
 Java → Cycled list
 https://hyperskill.org/learn/step/8296
+
+== case8297
+Java → Implementation of basic algorithms → Doubly linked list in Java
+Doubly linked list in Java → Rope
+https://hyperskill.org/learn/step/8297
