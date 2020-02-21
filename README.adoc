@@ -143,6 +143,11 @@ Java → Implementation of basic algorithms → Doubly linked list in Java
 Doubly linked list in Java → Simple doubly linked list
 https://hyperskill.org/learn/step/8294
 
+== case8295
+Java → Implementation of basic algorithms → Doubly linked list in Java
+Doubly linked list in Java → Double addition
+https://hyperskill.org/learn/step/8295
+
 == case8296
 Java → Implementation of basic algorithms → Doubly linked list in Java
 Java → Cycled list
