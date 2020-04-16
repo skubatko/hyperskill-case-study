@@ -1,4 +1,4 @@
-package ru.skubatko.dev.hyperskill.case5722.case8297;
+package ru.skubatko.dev.hyperskill.case8297;
 
 import java.util.Scanner;
 
