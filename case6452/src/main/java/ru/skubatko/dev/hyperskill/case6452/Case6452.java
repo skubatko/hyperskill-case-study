@@ -1,4 +1,4 @@
-package case6452;
+package ru.skubatko.dev.hyperskill.case6452;
 
 import java.util.ArrayList;
 import java.util.HashMap;

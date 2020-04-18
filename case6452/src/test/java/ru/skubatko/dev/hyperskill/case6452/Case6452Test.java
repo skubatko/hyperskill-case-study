@@ -1,7 +1,6 @@
-package case6452;
+package ru.skubatko.dev.hyperskill.case6452;
 
 
-import static case6452.Case6452.proceed;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Rule;
@@ -23,7 +22,7 @@ public class Case6452Test {
                 "count>b"
         };
 
-        int actual = proceed(variables, constraints);
+        int actual = Case6452.proceed(variables, constraints);
 
         assertThat(actual).isEqualTo(2);
     }
