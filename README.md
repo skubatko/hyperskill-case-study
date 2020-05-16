@@ -173,3 +173,8 @@ https://hyperskill.org/learn/step/8296
 Java → Implementation of basic algorithms → Doubly linked list in Java
 Doubly linked list in Java → Rope
 https://hyperskill.org/learn/step/8297
+
+## case9637
+Java Implementation of basic algorithms Rabin-Karp algorithm in Java
+Rabin-Karp algorithm in Java → Calculating a substring hash
+https://hyperskill.org/learn/daily/9637
