@@ -1,6 +1,11 @@
 Hyperskill exercises https://hi.hyperskill.org/about
 ---
 
+## case1932
+Java Basic syntax and simple programs Arrays
+Multi-dimensional array → Sum of neighbors
+https://hyperskill.org/learn/step/1932
+
 ## case2221
 Integer types and operations arrow right Snail
 https://hyperskill.org/learn/step/2221
