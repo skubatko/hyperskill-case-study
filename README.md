@@ -1,6 +1,11 @@
 Hyperskill exercises https://hi.hyperskill.org/about
 ---
 
+## case1931
+Java Basic syntax and simple programs Arrays
+Multi-dimensional array → Spiral
+https://hyperskill.org/learn/step/1931
+
 ## case1932
 Java Basic syntax and simple programs Arrays
 Multi-dimensional array → Sum of neighbors
