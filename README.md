@@ -53,6 +53,11 @@ https://hyperskill.org/learn/step/3655
 Java → Html Parser
 https://hyperskill.org/learn/step/3658
 
+## case3785
+Java Basic syntax and simple programs Arrays
+Multi-dimensional array → Check sudoku
+https://hyperskill.org/learn/step/3785
+
 ## case3791
 Processing strings  -> Create a euphonious word
 https://hyperskill.org/learn/step/3791
